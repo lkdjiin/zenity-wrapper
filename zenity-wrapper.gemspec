@@ -18,5 +18,4 @@ Gem::Specification.new do |s|
   s.files = FileList['lib/**/*.rb', '[A-Z]*'].to_a + readmes
 	s.license = ''
 	s.required_ruby_version = '>= 1.9.3'
-	s.executables = ['']
 end

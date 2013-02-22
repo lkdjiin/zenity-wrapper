@@ -2,25 +2,24 @@
 
 module Zenity
 
+  # Public: List dialog box wrapper.
   class List < Base
     attr_writer :separator, :print_column
 
     def initialize columns = ["Column Title"], data = ["Data"], options = []
       @command = "zenity --list \\\n"
       unless options.empty?
-        options.each do |o|
-          if ['checklist', 'radiolist', 'editable'].include? o
-            @command += "--#{o} \\\n" 
+        options.each do |opt|
+          if ['checklist', 'radiolist', 'editable'].include? opt
+            @command += "--#{opt} \\\n" 
           else
-            raise "Unknown option #{o} for zenity list"
+            raise "Unknown option #{opt} for zenity list"
           end
         end
       end
-      columns.map! { |c| "--column=\"#{c}\"" }
+      columns.map! { |col| "--column=\"#{col}\"" }
       @command += columns.join(" ") + " \\\n"
       @command += data.join(" \\\n")
-      @separator = nil
-      @print_column = nil
     end
 
     def get_command
@@ -30,18 +29,18 @@ module Zenity
     private
 
     def option_separator
-      if @separator.nil?
-        ""
-      else
+      if defined? @separator
         " --separator=#{@separator} " 
+      else
+        ""
       end
     end
 
     def option_print_column
-      if @print_column.nil?
-        ""
-      else
+      if defined? @print_column
         " --print-column=#{@print_column} "
+      else
+        ""
       end
     end
 
