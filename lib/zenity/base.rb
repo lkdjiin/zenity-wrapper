@@ -4,7 +4,7 @@ module Zenity
 
   # Internal: Base class for all dialog boxes.
   class Base
-    attr_writer :title
+    attr_writer :title, :width, :height
     attr_reader :exit_status
 
     def initialize
@@ -19,12 +19,33 @@ module Zenity
 
     private
 
-    def title
-      if defined? @title
-        " --title=\"#{@title}\" "  
-      else
-        ""
+      def general_options
+        title + width + height
       end
-    end
+
+      def title
+        if defined? @title
+          " --title=\"#{@title}\" "  
+        else
+          ""
+        end
+      end
+
+      def width
+        if defined? @width
+          " --width=\"#{@width}\" "  
+        else
+          ""
+        end
+      end
+
+      def height
+        if defined? @height
+          " --height=\"#{@height}\" "  
+        else
+          ""
+        end
+      end
+
   end
 end

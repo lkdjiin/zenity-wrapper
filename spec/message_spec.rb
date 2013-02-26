@@ -13,6 +13,8 @@ describe Message do
     it { should respond_to :get_command }
     it { should respond_to :proceed }
     it { should respond_to :title= }
+    it { should respond_to :width= }
+    it { should respond_to :height= }
   end
 
   it "should create an error message" do
@@ -49,4 +51,19 @@ describe Message do
     expected = %q{zenity --info --text="a" --title="my title" }
     obj.get_command.should == expected
   end
+
+  it "should allow the width option" do
+    obj = Message.new(:info, "a")
+    obj.width = 400
+    expected = %q{zenity --info --text="a" --width="400" }
+    obj.get_command.should == expected
+  end
+
+  it "should allow the height option" do
+    obj = Message.new(:info, "a")
+    obj.height = 400
+    expected = %q{zenity --info --text="a" --height="400" }
+    obj.get_command.should == expected
+  end
+
 end

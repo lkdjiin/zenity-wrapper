@@ -26,7 +26,7 @@ module Zenity
     #
     # Returns the shell command as a String
     def get_command
-      @command + title
+      @command + general_options
     end
 
   end

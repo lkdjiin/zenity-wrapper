@@ -23,7 +23,7 @@ module Zenity
     end
 
     def get_command
-      @command + option_separator + option_print_column + title
+      @command + option_separator + option_print_column + general_options
     end
 
     private
