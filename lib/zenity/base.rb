@@ -17,6 +17,22 @@ module Zenity
       ret.delete("\n")
     end
 
+    def ok?
+      @exit_status == OK
+    end
+
+    def cancel?
+      @exit_status == CANCEL
+    end
+
+    def error?
+      @exit_status == ERROR
+    end
+
+    def expired?
+      @exit_status == EXPIRED
+    end
+
     private
 
       def general_options
