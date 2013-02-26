@@ -1,3 +1,9 @@
-v2.30.0.0 2013-02-18
+2.30.0.1 2013-02-26
+
+  * Add general options width and heigth
+  * Add methods and constants to check the exit status 
+
+
+2.30.0.0 2013-02-18
 
   * List and message dialogs
